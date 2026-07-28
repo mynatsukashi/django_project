@@ -1,11 +1,35 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=viewport, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <div class = "main-container sticky-header">
+            <div class = "menu-items">
+                <p class="menu-item">Home</p>
+                <p class="menu-item">Details</p>
+                <p class="menu-item">Filters</p>
+                <p class="menu-item create">Create</p>
+            </div>
+    </div>
+    <div class = "greeting">
+        <h1>Welcome to Shelf Nerds!</h1>
+    </div>
+    <div class = "posts-container">
+            {% for review in reviews%}
+            <div class = "post-style">
+                <p><i>Written by {{review.user.username}} ({{review.created_at|timesince}} ago)</i></p>
+                <h3>'{{review.book.title}}' - {{review.book.author}} | {{review.rating}}★</h3>
+                <p>{{review.content}}</p>
+            </div>
+            {%endfor%}
 
+
+    </div>
 </body>
+</head>
 </html>

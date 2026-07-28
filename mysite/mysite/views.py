@@ -1,4 +1,10 @@
 from django.shortcuts import render
+from books import models
 
 def home_page(request):
-    return render(request, "home.html" )
+    posts = models.Review.objects.all()
+    return render(
+        request, 
+        "home.html",
+        {"reviews": posts}
+    )
