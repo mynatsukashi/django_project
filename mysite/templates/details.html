@@ -4,27 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Post#{{review_id}}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class = "main-container sticky-header">
+     <div class = "main-container sticky-header">
             <div class = "menu-items">
-                <p class="menu-item" href="{% url 'home' %}">Home</p>
-                <p class="menu-item">Create</p>
-                <p class="menu-item login">Log In</p>
+                <a class="menu-item" href="{% url 'home' %}">Home</a>
+                <p class="menu-item">Filters</p>
+                <p class="menu-item create">Create</p>
             </div>
     </div>
     <div class = "greeting">
-        <h1>Welcome to Shelf Nerds!</h1>
+        <h1>Selected Post:</h1>
     </div>
-    <div class = "posts-container">
-            {% for review in reviews%}
+    <div class = "posts-container ">
             <div class = "post-style">
                 <p><i>Written by {{review.user.username}} ({{review.created_at|timesince}} ago)</i></p>
-                <a href="{% url 'details' review_id=review.id %}"> 
-                    <h3>'{{review.book.title}}' - {{review.book.author}} | {{review.stars}}</h3>
-                </a>
+                <h3>'{{review.book.title}}' - {{review.book.author}} | {{review.stars}}</h3>
                     <div class = "genres">
                             <div class ="genre">
                                 {% for genre in review.book.genre.all %}
@@ -34,10 +31,8 @@
                     </div>
                 <p>{{review.content}}</p>
             </div>
-            {%endfor%}
 
 
     </div>
 </body>
-</head>
 </html>

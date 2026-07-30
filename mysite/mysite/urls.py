@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mysite.views import home_page
+from mysite.views import home_page, details_page, category_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_page),
+    path('', home_page, name = "home"),
+    path('review/<int:review_id>/', details_page, name ="details"),
+    path('category/<int:genre_id>/', category_page, name = "category")
 ]

@@ -5,12 +5,17 @@ body {
     padding:0;
 }
 
+a{
+    color:black;
+    text-decoration: none;
+}
+
 .main-container {
     position: sticky;
     top:0;
     z-index: 1000;
     margin:auto;
-    background-color: rgb(150, 170, 140);
+    background-color: rgb(96, 116, 86);
     padding: 15px 150px 15px 150px;
     justify-content: space-between;
 }
@@ -44,11 +49,13 @@ body {
     width:auto;
     height:fit-content;
     flex-wrap: wrap;
-    display:flex;
+    display:grid;
     justify-content: center;
 
 
 }
+
+
 
 .post-style{
     background-color:rgba(186, 105, 76, 0.101);
@@ -56,8 +63,24 @@ body {
     height:fit-content;
     justify-content:left;
     display:flexbox;
-    padding: 10px 0 10px 20px ;
+    padding: 10px 10px 10px 20px ;
     border-radius: 10px;
     border: 1px solid rgb(90, 24, 24);
-    margin:10px;
+    margin: 10px 0 10px 0;
+}
+
+.post-style p{
+    text-align: justify;
+    padding-right:10px;
+}
+
+
+.genre{
+    border: 10px;
+    width:fit-content;
+    height:auto;
+    background-color:rgb(123, 37, 37) ;
+    border-radius: 10px;
+    color:white;
+    padding:5px;
 }
