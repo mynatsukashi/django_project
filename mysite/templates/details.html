@@ -30,6 +30,17 @@
                             </div> 
                     </div>
                 <p>{{review.content}}</p>
+                <span class="comments-count">💬{{review.comments.all|length}} comment(s)</span>
+                <div class="comment-section">
+                        {%for comment in review.comments.all%}
+                        <div class="comment-details">
+                            <p class="comment-items">
+                            {{comment.user.username}}:
+                            {{comment.comment}}
+                            </p>
+                        </div>
+                    {%endfor%}
+                </div>
             </div>
 
 

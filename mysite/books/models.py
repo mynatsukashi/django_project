@@ -44,8 +44,12 @@ class Review(models.Model):
         return f"Review by {self.user.username} for '{self.book.title}'"
 
 class Comment(models.Model):
-    user_comment = models.ForeignKey(User, on_delete = models.CASCADE)
-    review_post = models.ForeignKey(Review, on_delete = models.CASCADE)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    review_post = models.ForeignKey(Review, related_name = "comments", on_delete = models.CASCADE)
     comment = models.TextField()
+
+    def __str__(self):
+        return f"{self.comment}"
+
 
     

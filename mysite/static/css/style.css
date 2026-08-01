@@ -56,7 +56,6 @@ a{
 }
 
 
-
 .post-style{
     background-color:rgba(186, 105, 76, 0.101);
     width:800px;
@@ -69,12 +68,6 @@ a{
     margin: 10px 0 10px 0;
 }
 
-.post-style p{
-    text-align: justify;
-    padding-right:10px;
-}
-
-
 .genre{
     border: 10px;
     width:fit-content;
@@ -84,3 +77,13 @@ a{
     color:white;
     padding:5px;
 }
+
+
+.review-content{
+    padding: 0 10px 20px 0;
+    text-align: justify;
+    border-bottom: 1px solid rgb(186, 106, 76);
+
+}
+
+

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=viewport, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
@@ -15,13 +15,18 @@
                 <p class="menu-item login">Log In</p>
             </div>
     </div>
+    <form method = "POST" action="/logout/ ">
+        {%csrf_token%}
+        <button>Log out</button>
+
+    </form>
     <div class = "greeting">
         <h1>Welcome to Shelf Nerds!</h1>
     </div>
     <div class = "posts-container">
             {% for review in reviews%}
             <div class = "post-style">
-                <p><i>Written by {{review.user.username}} ({{review.created_at|timesince}} ago)</i></p>
+                <p><i>Written by {{review.user.username}} ({{review.created_at}})</i></p>
                 <a href="{% url 'details' review_id=review.id %}"> 
                     <h3>'{{review.book.title}}' - {{review.book.author}} | {{review.stars}}</h3>
                 </a>
@@ -32,9 +37,23 @@
                             {% endfor %}
                             </div> 
                     </div>
-                <p>{{review.content}}</p>
+                <p class = "review-content">{{review.content}}</p>
+                <span class="comments-count">💬{{review.comments.all|length}} comment(s)</span>
+                <div class="comment-section">
+                        {%for comment in review.comments.all%}
+                        <div class="comment-details">
+                            <p class="comment-items">
+                            {{comment.user.username}}:
+                            {{comment.comment}}
+                            </p>
+                            <p>{{comment.created_at|timesince}}</p>
+                        </div>
+                        
+                    {%endfor%}
+                </div>
             </div>
             {%endfor%}
+            
 
 
     </div>
