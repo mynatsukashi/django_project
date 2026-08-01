@@ -1,6 +1,6 @@
 body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: rgb(238, 224, 204);
+    background-color: rgb(243, 232, 223);
     margin: 0;
     padding:0;
 }
@@ -15,7 +15,7 @@ a{
     top:0;
     z-index: 1000;
     margin:auto;
-    background-color: rgb(96, 116, 86);
+    background-color: rgb(69, 40, 41);
     padding: 15px 150px 15px 150px;
     justify-content: space-between;
 }
@@ -28,14 +28,23 @@ a{
 
 .menu-item{
     font-size:18px;
+    color: rgb(243, 232, 223);
 }
 
 .menu-item:hover{
-    border: 1px solid rgb(33, 56, 21);
+    border: 1px solid rgb(69, 40, 41);
     border-radius: 4px;
-    background-color:rgb(33, 56, 21);
+    background-color:rgb(69, 40, 41);
     padding: 2px;
-    color: white;
+    color: rgb(243, 232, 223);
+    cursor:pointer;
+}
+
+.logout{
+    background-color:rgb(243, 232, 223);
+    border: 1px solid rgb(243, 232, 223);
+    border-radius: 15px;
+    color:black;
 }
 
 .greeting{
@@ -57,7 +66,7 @@ a{
 
 
 .post-style{
-    background-color:rgba(186, 105, 76, 0.101);
+    background-color:rgb(232, 209, 197);
     width:800px;
     height:fit-content;
     justify-content:left;
@@ -74,7 +83,7 @@ a{
     height:auto;
     background-color:rgb(123, 37, 37) ;
     border-radius: 10px;
-    color:white;
+    color:rgb(243, 232, 223);
     padding:5px;
 }
 
@@ -84,6 +93,13 @@ a{
     text-align: justify;
     border-bottom: 1px solid rgb(186, 106, 76);
 
+}
+
+.comment-items{
+    border:1px solid rgb(243, 232, 223);
+    border-radius:5px;
+    padding:5px;
+    background-color: rgba(87, 89, 91, 0.341);
 }
 
 
