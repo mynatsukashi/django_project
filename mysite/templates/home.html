@@ -25,6 +25,21 @@
     <div class = "greeting">
         <h1>Welcome to Shelf Nerds, {{request.user}}!</h1>
     </div>
+    
+    <div class="create-post-container">
+        {%if request.user.is_authenticated%}
+        <form method = "POST">
+            {% csrf_token %}
+            <input type="text" name = "book" placeholder="Type book here">
+            <input type="text" name="author_name" placeholder="Author's first name">
+            <input type="text" name="author_surname" placeholder="Author's surname">
+            <input type="text" name="genres" placeholder="Genres, comma-separated">
+            <input type="number" name="rating" min="1" max="5" placeholder="Enter rating [1-5]">
+            <textarea name="content" placeholder="Review"></textarea>
+            <button>Create Post</button>
+        </form>
+        {%endif%}
+    </div>
 
     <div class = "posts-container">
             {% for review in reviews%}
