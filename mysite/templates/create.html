@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=viewport, initial-scale=1.0">
+    <title>Create new post</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <div class = "main-container sticky-header">
+            <div class = "menu-items">
+                <a class="menu-item" href="{% url 'home' %}">Home</a>
+                <p class="menu-item">Create</p>
+                    {%if request.user.is_authenticated%}
+                    <form method = "POST" action="{%url 'logout'%}">
+                        {%csrf_token%}
+                        <button class = "logout menu-item">Log out</button>
+                    </form>
+                    {%else%}
+                        <a href="{%url 'login'%}" class= "menu-item">Log in</a>
+                    {%endif%}
+            </div>
+    </div>
+     <div class="create-post-container">
+        {%if request.user.is_authenticated%}
+        <form action = "/create/" method = "POST">
+            {% csrf_token %}
+            <input type="text" name = "book" placeholder="Type book here">
+            <input type="text" name="author_name" placeholder="Author's first name">
+            <input type="text" name="author_surname" placeholder="Author's surname">
+            <input type="text" name="genres" placeholder="Genres, comma-separated">
+            <input type="number" name="rating" min="1" max="5" placeholder="Enter rating [1-5]">
+            <textarea name="content" placeholder="Review"></textarea>
+            <button type = "submit">Create Post</button>
+        </form>
+        {%endif%}
+    </div>
+</body>
+</html>
