@@ -2,11 +2,19 @@ from django.shortcuts import render, redirect
 from books import models
 
 def home_page(request):
+    query = request.GET.get('q')
+
     posts = models.Review.objects.all().order_by('-created_at')
+
+    if query:
+        posts = posts.filter(book__title__icontains = query).distinct()
     return render(
         request, 
         "home.html",
-        {"reviews": posts}
+        {
+            "reviews": posts,
+            "query": query,
+        }
     )
 
 def details_page(request,review_id):
@@ -51,3 +59,20 @@ def create_post_page(request):
             content = content)
         return redirect("home")
     return render( request, "create.html")
+
+def post_comment_section(request):
+
+    if request.method =="POST":
+        print(request.POST)
+        user_comment = request.POST["comment"]
+        review_id = request.POST['review_id']
+
+        review = models.Review.objects.get(id=review_id)
+
+        models.Comment.objects.create(
+            user = request.user,
+            comment = user_comment,
+            review_post = review
+        )
+        return redirect("home")
+    return render(request, "home.html")

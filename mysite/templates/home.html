@@ -11,7 +11,7 @@
     <div class = "main-container sticky-header">
             <div class = "menu-items">
                 <a class="menu-item" href="{% url 'home' %}">Home</a>
-                <p class="menu-item">Create</p>
+                <a class="menu-item" href="{% url 'create'%}">Create</a>
                     {%if request.user.is_authenticated%}
                     <form method = "POST" action="{%url 'logout'%}">
                         {%csrf_token%}
@@ -25,8 +25,13 @@
     <div class = "greeting">
         <h1>Welcome to Shelf Nerds, {{request.user}}!</h1>
     </div>
-    
     <div class = "posts-container">
+        <div class="search-form">
+            <form method="GET" class="search-box">
+                <input class="search-placeholder" type="text" name = "q" placeholder="Search by title " value = "{{query|default:'' }}">
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </div>
             {% for review in reviews%}
             <div class = "post-style">
                 <p><i>Written by {{review.user.username}} ({{review.created_at}})</i></p>
@@ -42,6 +47,14 @@
                     </div>
                 <p class = "review-content">{{review.content}}</p>
                 <span class="comments-count">💬{{review.comments.all|length}} comment(s)</span>
+                {%if request.user.is_authenticated%}
+                    <form action="{% url 'post_comment' %}" method="POST">
+                       {% csrf_token %}
+                        <input type="hidden" name = "review_id" value ="{{review.id}}">
+                        <textarea name="comment" placeholder="Drop your comment here" class="post-comment-create"></textarea>
+                        <button type="submit" class ="create-button">Submit</button>
+                    </form>
+                {%endif%}
                 <div class="comment-section">
                         {%for comment in review.comments.all%}
                         <div class="comment-details">

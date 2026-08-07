@@ -16,11 +16,10 @@ a{
     z-index: 1000;
     margin:auto;
     background-color: rgb(69, 40, 41);
-    padding: 15px 150px 15px 150px;
-    justify-content: space-between;
 }
 
 .menu-items{
+    padding: 15px 150px 20px 150px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -54,6 +53,36 @@ a{
 
 }
 
+.genre-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 800px;
+    margin: 0 auto 24px auto;
+}
+
+.genre-btn {
+    background-color: #7a3b3b; 
+    color: #f5e9dc;              
+    border: none;
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.genre-btn:hover {
+    background-color: #5e2c2c;
+}
+
+.genre-btn.active {
+    background-color: #3b1f1f; 
+    color: #f5e9dc;
+}
+
+
 .posts-container{
     width:auto;
     height:fit-content;
@@ -61,13 +90,30 @@ a{
     justify-content: center;
 }
 
+.search-placeholder{
+    width:85%;
+    padding: 10px 40px 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+}
+
+.search-button{
+    background-color: rgb(69, 40, 41);
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+
+
+
 
 .post-style{
     background-color:rgb(232, 209, 197);
     width:800px;
     height:fit-content;
     justify-content:left;
-    display:flexbox;
     padding: 10px 10px 10px 20px ;
     border-radius: 10px;
     border: 1px solid rgb(90, 24, 24);
@@ -93,10 +139,9 @@ a{
 }
 
 .comment-items{
-    border:1px solid rgb(243, 232, 223);
+    border-radius: 2px;
     border-radius:5px;
     padding:5px;
-    background-color: rgba(87, 89, 91, 0.341);
 }
 
 .create-post-container{
@@ -111,5 +156,117 @@ a{
 .create-button{
     background-color: rgb(69, 40, 41);
     color:rgb(243, 232, 223);
-    padding: 5px 0 5px 0;
+    padding: 5px;
+    border-radius:5px;
+}
+
+.post-comment-create{
+    margin-top:10px;
+    width:786px;
+    height:50px;
+    resize:none;
+    overflow:auto;
+    border:1px solid rgb(255, 96, 96);
+    background-color:rgb(243, 232, 223);
+}
+
+
+/* LOGIN PAGE , SIGNUP PAGE*/
+
+.login-container, .signup-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(247, 234, 224);
+}
+
+.login-form, .signup-form {
+    background: #ffffff;
+    padding: 40px 35px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 360px;
+}
+
+.login-form p, .signup-form p {
+    margin-bottom: 18px;
+}
+
+.login-form, .signup-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"]{
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: rgb(29, 69, 51);
+    box-shadow: 0 0 0 3px rgba(29, 69, 51, 0.37);
+}
+
+.login-button, .signup-button{
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    background: rgb(29, 69, 51);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.login-button:hover, .signup-button:hover {
+    background:rgb(9, 54, 34);
+}
+
+.link-signup{
+    display:flex;
+    justify-content: center;
+}
+
+
+/* HELPTEXT */
+
+.helptext{
+    display: none;
+}
+
+form p:focus-within .helptext{
+    display: block;
+    font-size: 12px;
+    color: #777;
+    margin-top: 4px;
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0;
+    color: #d9534f;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.errorlist li {
+    margin-bottom: 2px;
 }

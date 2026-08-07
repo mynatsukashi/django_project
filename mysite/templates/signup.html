@@ -5,17 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=viewport, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>LogIn</title>
+    <title>Sign up</title>
 </head>
 <body>
-    <div class="login-container">
-        <form method="post" class="login-form">
+    <div class="signup-container">
+        <form method="post" class="signup-form">
             {%csrf_token%}
             {{form.as_p}}
-            <button type="submit" class="login-button">Log in</button>
-
-            <p class="link-signup">Don't have an account?</p>
-            <a href="{%url 'signup'%}" class="link-signup">Sign Up</a>
+            <button type="submit" class="signup-button">Sign Up</button>
         </form>
     
     </div>
