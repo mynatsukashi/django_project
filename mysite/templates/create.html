@@ -12,7 +12,7 @@
     <div class = "main-container sticky-header">
             <div class = "menu-items">
                 <a class="menu-item" href="{% url 'home' %}">Home</a>
-                <p class="menu-item">Create</p>
+                <p class="menu-item" href="{% url 'create' %}">Create</p>
                     {%if request.user.is_authenticated%}
                     <form method = "POST" action="{%url 'logout'%}">
                         {%csrf_token%}

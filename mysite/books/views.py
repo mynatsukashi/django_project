@@ -28,7 +28,6 @@ def details_page(request,review_id):
 @login_required
 def create_post_page(request):
     if request.method == "POST":
-        print(request.POST)
         book_title = request.POST["book"]
         author_name = request.POST["author_name"]
         author_surname = request.POST["author_surname"]
@@ -57,7 +56,6 @@ def create_post_page(request):
 def post_comment_section(request, review_id):
 
     if request.method =="POST":
-        print(request.POST)
         user_comment = request.POST.get("comment")
         # Redirects to home page if comment is empty. Without it user will create new comments, but without any context. Not what we are looking for.
         if not user_comment:

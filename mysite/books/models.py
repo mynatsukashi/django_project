@@ -47,6 +47,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     review_post = models.ForeignKey(Review, related_name = "comments", on_delete = models.CASCADE)
     comment = models.TextField()
+    
 
     def __str__(self):
         return f"{self.comment}"

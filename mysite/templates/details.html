@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post#{{review_id}}</title>
+    <title>Selected Post</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <div class = "main-container sticky-header">
             <div class = "menu-items">
                 <a class="menu-item" href="{% url 'home' %}">Home</a>
-                <p class="menu-item">Create</p>
+                <a class="menu-item" href="{% url 'create' %}">Create</a>
                     {%if request.user.is_authenticated%}
                     <form method = "POST" action="{%url 'logout'%}">
                         {%csrf_token%}
