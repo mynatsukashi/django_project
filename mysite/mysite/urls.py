@@ -24,6 +24,6 @@ urlpatterns = [
     path('review/<int:review_id>/', details_page, name ="details"),
     path('', include('users.urls')),
     path('create/', create_post_page, name="create"),
-    path("post-comment/", post_comment_section, name="post_comment"),
+    path("post-comment/<int:review_id>/", post_comment_section, name="post_comment"),
     path('signup/', signup, name="signup")
 ]

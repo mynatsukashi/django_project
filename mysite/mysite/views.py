@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from books import models
 
 def home_page(request):
@@ -34,7 +35,7 @@ def details_page(request,review_id):
 def category_page(request):
     return render(request, "category.html")
 
-
+@login_required
 def create_post_page(request):
     if request.method == "POST":
         print(request.POST)
@@ -52,7 +53,7 @@ def create_post_page(request):
         book, _ = models.Book.objects.get_or_create(author = author, title = book_title)
         book.genre.add(genre)
 
-        nex_post = models.Review.objects.create(
+        models.Review.objects.create(
             book=book,
             user = request.user,
             rating = rating,
@@ -60,14 +61,19 @@ def create_post_page(request):
         return redirect("home")
     return render( request, "create.html")
 
-def post_comment_section(request):
+@login_required
+def post_comment_section(request, review_id):
 
     if request.method =="POST":
         print(request.POST)
-        user_comment = request.POST["comment"]
-        review_id = request.POST['review_id']
-
-        review = models.Review.objects.get(id=review_id)
+        user_comment = request.POST.get("comment")
+        # Redirects to home page if comment is empty. Without it user will create new comments, but without any context. Not what we are looking for.
+        if not user_comment:
+            return redirect("home")
+        try:
+            review = models.Review.objects.get(id=review_id)
+        except models.Review.DoesNotExist:
+            return redirect("home")
 
         models.Comment.objects.create(
             user = request.user,

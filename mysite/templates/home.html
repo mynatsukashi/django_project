@@ -48,7 +48,7 @@
                 <p class = "review-content">{{review.content}}</p>
                 <span class="comments-count">💬{{review.comments.all|length}} comment(s)</span>
                 {%if request.user.is_authenticated%}
-                    <form action="{% url 'post_comment' %}" method="POST">
+                    <form action="{% url 'post_comment' review_id=review.id %}" method="POST">
                        {% csrf_token %}
                         <input type="hidden" name = "review_id" value ="{{review.id}}">
                         <textarea name="comment" placeholder="Drop your comment here" class="post-comment-create"></textarea>
