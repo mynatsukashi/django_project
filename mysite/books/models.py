@@ -39,6 +39,11 @@ class Review(models.Model):
     
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints =[
+            models.UniqueConstraint(fields=['user', 'book'], name='unique_review_per_user_per_book')
+        ]
     
     def __str__(self):
         return f"Review by {self.user.username} for '{self.book.title}'"

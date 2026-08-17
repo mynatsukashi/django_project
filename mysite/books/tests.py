@@ -1,9 +1,9 @@
 from django.test import TestCase
 from django.db.utils import IntegrityError
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from .models import Review, Book, Genre, Author
 
-# Create your tests here.
+User = get_user_model()
 
 class ReviewModelTests(TestCase):
     def setUp(self):
