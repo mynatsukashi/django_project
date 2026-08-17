@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from books import models
 
+@login_required
 def home_page(request):
     query = request.GET.get('q')
 

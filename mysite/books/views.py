@@ -40,8 +40,8 @@ def create_post_page(request):
         )
         book, _ = models.Book.objects.get_or_create(author = author, title = book_title)
         for g in genre_name.split(","):
-            genre, _ = models.Genre.objects.get_or_create(name = g.strip())
-        book.genre.add(genre)
+            genre, _ = models.Genre.objects.get_or_create(genre_name = g.strip())
+            book.genre.add(genre)
 
         models.Review.objects.create(
             book=book,
